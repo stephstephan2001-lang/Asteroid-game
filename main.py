@@ -6,6 +6,7 @@ from logger import log_state
 from player import Player  
 from asteroid import Asteroid
 from logger import log_event
+from shot import Shot
 
 
 
@@ -24,12 +25,15 @@ def main():
     x = SCREEN_WIDTH / 2
     y = SCREEN_HEIGHT / 2
     
+    
     asteroids = pygame.sprite.Group()
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
     
     Asteroid.containers = (asteroids, updatable, drawable)
     Player.containers = (updatable, drawable)
+    Shot.containers = (shots, updatable, drawable)
     AsteroidField.containers = (updatable,)
     AsteroidField()
     player = Player(x,y)
