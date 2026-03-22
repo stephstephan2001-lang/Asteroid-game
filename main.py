@@ -10,6 +10,7 @@ from shot import Shot
 
 
 
+
 def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -73,9 +74,13 @@ def main():
         for drawing in drawable:
             drawing.draw(screen)
 
+        #Lives HUD
+        lives_surface = font.render(f"Lives: {player.lives}", True, pygame.Color("white"))
+        screen.blit(lives_surface, (10, 10))
         # score HUD
         score_surface = font.render(f"Score: {score}", True, pygame.Color("white"))
-        screen.blit(score_surface, (10, 10))
+        score_x = SCREEN_WIDTH / 2 - (score_surface.get_width() / 2)
+        screen.blit(score_surface, (score_x, 10))
 
         #Renders the screen
         pygame.display.flip()
